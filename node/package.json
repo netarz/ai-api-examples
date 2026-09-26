@@ -1,0 +1,21 @@
+{
+  "name": "netarz-ai-api-examples-node",
+  "private": true,
+  "type": "module",
+  "description": "Node.js examples for the NetArz OpenAI-compatible AI gateway",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "chat": "node chat.mjs",
+    "stream": "node stream.mjs",
+    "tools": "node tools.mjs",
+    "json": "node structured-output.mjs",
+    "embeddings": "node embeddings.mjs",
+    "proxy": "node server-proxy.mjs"
+  },
+  "dependencies": {
+    "openai": "^7.0.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "netarz/ai-api-examples-php",
+    "description": "PHP examples for the NetArz OpenAI-compatible AI gateway",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.1",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "openai-php/client": "^0.21",
+        "guzzlehttp/guzzle": "^7.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

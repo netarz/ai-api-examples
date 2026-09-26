@@ -1,0 +1,34 @@
+# Continue config (~/.continue/config.yaml) using the NetArz AI gateway.
+# Put the key in Continue's secrets (or ~/.continue/.env as NETARZ_API_KEY), never in this file.
+name: NetArz models
+version: 1.0.0
+schema: v1
+
+models:
+  - name: GPT-4.1 mini (NetArz)
+    provider: openai
+    model: gpt-4.1-mini
+    apiBase: https://netarz.ir/api/ai/v1
+    apiKey: ${{ secrets.NETARZ_API_KEY }}
+    roles: [chat, edit, apply]
+
+  - name: Claude Sonnet 4.5 (NetArz via OpenRouter)
+    provider: openai
+    model: openrouter/anthropic/claude-sonnet-4.5
+    apiBase: https://netarz.ir/api/ai/v1
+    apiKey: ${{ secrets.NETARZ_API_KEY }}
+    roles: [chat, edit, apply]
+
+  - name: DeepSeek Flash (NetArz)
+    provider: openai
+    model: deepseek-flash
+    apiBase: https://netarz.ir/api/ai/v1
+    apiKey: ${{ secrets.NETARZ_API_KEY }}
+    roles: [chat, edit]
+
+  - name: NetArz embeddings
+    provider: openai
+    model: text-embedding-3-small
+    apiBase: https://netarz.ir/api/ai/v1
+    apiKey: ${{ secrets.NETARZ_API_KEY }}
+    roles: [embed]
