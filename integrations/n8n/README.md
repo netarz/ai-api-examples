@@ -18,7 +18,7 @@
 `https://netarz.ir/api/ai/v1` بنویسید. بعد نود «OpenAI Chat Model» (برای AI Agent) یا «Embeddings OpenAI»
 را با همین credential به کار ببرید و شناسهٔ مدل را دستی بنویسید.
 
-راهنمای کامل ابزارها: [netarz.ir/docs/ai/sdks](https://netarz.ir/docs/ai/sdks)
+راهنمای کامل ابزارها: [netarz.ir/docs/ai/sdks](https://netarz.ir/docs/ai/sdks?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=integrations-n8n-readme)
 
 ---
 

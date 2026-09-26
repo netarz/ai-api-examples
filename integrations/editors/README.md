@@ -16,14 +16,14 @@
   در `GET https://netarz.ir/api/ai/v1/models?type=chat` مقدار `capabilities.tools` را ببینید.
   شناسهٔ Claude با `openrouter/anthropic/` شروع می‌شود.
 - **برای این کلید سقف هزینه بگذارید.** این ابزارها در هر درخواست بخش بزرگی از کد پروژه را می‌فرستند و
-  مصرف توکن بالا می‌رود. در پنل [/ai](https://netarz.ir/ai) برای کلید سقف هزینه تعیین کنید.
+  مصرف توکن بالا می‌رود. در پنل [/ai](https://netarz.ir/ai?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=integrations-editors-readme) برای کلید سقف هزینه تعیین کنید.
 - **حجم هر درخواست سقف دارد** (در حال حاضر ۴ مگابایت). اگر خطای `request_too_large` گرفتید، فایل‌های کمتری را به گفت‌وگو اضافه کنید.
 - **Cursor درخواست را از سرورهای خودش می‌فرستد**، نه از رایانهٔ شما؛ پس فهرست IP مجاز را برای این کلید خالی بگذارید.
   بعضی امکانات Cursor مثل تکمیل خودکار (Tab) همیشه با مدل‌های خودِ Cursor کار می‌کنند و از کلید شما استفاده نمی‌کنند.
 - تکمیل خودکار خط‌به‌خط (FIM) را به این درگاه نسپارید؛ مسیر `/completions` متن را به یک پیام گفت‌وگو تبدیل می‌کند و برای FIM ساخته نشده.
 
-خطاها و محدودیت‌ها: [netarz.ir/docs/ai/errors](https://netarz.ir/docs/ai/errors) و
-[netarz.ir/docs/ai/rate-limits-and-security](https://netarz.ir/docs/ai/rate-limits-and-security)
+خطاها و محدودیت‌ها: [netarz.ir/docs/ai/errors](https://netarz.ir/docs/ai/errors?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=integrations-editors-readme) و
+[netarz.ir/docs/ai/rate-limits-and-security](https://netarz.ir/docs/ai/rate-limits-and-security?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=integrations-editors-readme)
 
 ---
 
