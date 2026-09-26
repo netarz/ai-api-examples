@@ -1,6 +1,6 @@
 """Check a key and list models.
 
-GET /models needs no key (filter with ?type=chat|embedding|image|audio|video).
+GET /models needs no key (filter with ?type=chat|embedding|image|audio_tts|audio_stt|video|music).
 GET /me shows the balance, the key's effective RPM and spend limit.
 
 Docs: https://netarz.ir/docs/ai/authentication

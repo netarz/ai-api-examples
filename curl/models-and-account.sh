@@ -3,7 +3,7 @@
 # Docs: https://netarz.ir/docs/ai/models-and-pricing , https://netarz.ir/docs/ai/authentication
 set -euo pipefail
 
-# type = chat | embedding | image | audio | video
+# type = chat | embedding | image | audio_tts | audio_stt | video | music
 curl -sS "https://netarz.ir/api/ai/v1/models?type=chat" | head -c 800
 echo -e "\n..."
 
