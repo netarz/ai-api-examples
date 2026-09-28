@@ -1,0 +1,41 @@
+# Monthly dependency updates for every example that has a manifest.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directories:
+      - /python
+      - /langchain
+      - /telegram-bot
+    schedule:
+      interval: monthly
+    groups:
+      python:
+        patterns: ["*"]
+
+  - package-ecosystem: npm
+    directory: /node
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: composer
+    directory: /php
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: gomod
+    directory: /go
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: nuget
+    directory: /dotnet
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
