@@ -6,6 +6,7 @@
 
 OpenAI-compatible AI API examples for developers in Iran: one key for GPT, Claude, Gemini and DeepSeek, prepaid in Toman.
 
+[![CI](https://github.com/netarz/ai-api-examples/actions/workflows/ci.yml/badge.svg)](https://github.com/netarz/ai-api-examples/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-ffc700?style=flat-square&labelColor=14161f)](LICENSE)
 [![OpenAI compatible](https://img.shields.io/badge/OpenAI-compatible-ffc700?style=flat-square&labelColor=14161f)](https://netarz.ir/docs/ai/migrating-from-openai?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=header)
 [![Python](https://img.shields.io/badge/Python-3.9%2B-ffc700?style=flat-square&labelColor=14161f&logo=python&logoColor=white)](python/)
