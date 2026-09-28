@@ -12,7 +12,8 @@
     "tools": "node tools.mjs",
     "json": "node structured-output.mjs",
     "embeddings": "node embeddings.mjs",
-    "proxy": "node server-proxy.mjs"
+    "proxy": "node server-proxy.mjs",
+    "vision": "node vision.mjs"
   },
   "dependencies": {
     "openai": "^7.0.0"
