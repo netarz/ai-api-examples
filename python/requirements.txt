@@ -1,2 +1,2 @@
-openai>=1.40
-requests>=2.31
+openai>=3.19.2
+requests>=2.34.2
