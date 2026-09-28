@@ -22,7 +22,7 @@
 5. شناسهٔ مدل را از [فهرست زندهٔ مدل‌ها](https://netarz.ir/api/ai/v1/models?type=chat) بردارید. Claude فقط با پیشوند `openrouter/anthropic/` کار می‌کند.
 6. کد، نام متغیرها و توضیح‌های داخل کد انگلیسی باشد. README فارسی است و یک بخش English کوتاه دارد.
 7. فایل تازه را در جدول «فهرست نمونه‌ها» در README اضافه کنید، با لینک صفحهٔ مستندات مربوط.
-8. کد را یک بار واقعاً اجرا کنید. بررسی سریع نحو: `python -m py_compile <file>.py` · `node --check <file>.mjs` · `php -l <file>.php` · `bash -n <file>.sh`
+8. کد را یک بار واقعاً اجرا کنید. بررسی سریع نحو: `python -m py_compile <file>.py` · `node --check <file>.mjs` · `php -l <file>.php` · `bash -n <file>.sh` · `go vet ./...` (در پوشهٔ `go`) · `dotnet build` (در پوشهٔ `dotnet`) · `ruby -c <file>.rb`. همین بررسی‌ها با هر Pull Request در [CI](.github/workflows/ci.yml) هم اجرا می‌شود و هیچ درخواستی به API نمی‌فرستد.
 
 ## سبک نوشتن متن فارسی
 
@@ -40,6 +40,6 @@
 ## Contributing (English)
 
 Thanks for improving the NetArz AI API examples. Open an issue before a large change. Never commit a real key (`sk-ntz-v1-…`) or token;
-if you did, revoke it in the NetArz panel first. Read the key from `NETARZ_API_KEY`, always send `max_tokens`, take model ids from the live `/models` list. Run the code once for real before opening a pull request.
+if you did, revoke it in the NetArz panel first. Read the key from `NETARZ_API_KEY`, always send `max_tokens`, take model ids from the live `/models` list. Run the code once for real before opening a pull request. CI (`.github/workflows/ci.yml`) runs syntax and build checks on every pull request and never calls the API.
 Account, credit and billing questions go to `info@netarz.ir`, security issues to `dev@netarz.ir` (see [SECURITY.md](SECURITY.md)).
 By contributing you agree your work is released under MIT.
