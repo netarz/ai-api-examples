@@ -20,8 +20,8 @@ jobs:
     name: Python (py_compile)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Compile every .py file
@@ -31,8 +31,8 @@ jobs:
     name: Node.js (node --check)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: "20"
       - name: Check every .mjs file
@@ -48,7 +48,7 @@ jobs:
       matrix:
         php: ["8.1", "8.2", "8.3", "8.4"]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
@@ -66,8 +66,8 @@ jobs:
       run:
         working-directory: go
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
         with:
           go-version-file: go/go.mod
           cache: false
@@ -80,8 +80,8 @@ jobs:
     name: .NET (dotnet build)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: "8.0.x"
       - run: dotnet build dotnet/NetArzAiExamples.csproj --configuration Release
@@ -90,7 +90,7 @@ jobs:
     name: Ruby (ruby -c)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
@@ -101,7 +101,7 @@ jobs:
     name: Shell (shellcheck)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: shellcheck curl/*.sh
         run: shellcheck curl/*.sh
 
@@ -109,7 +109,7 @@ jobs:
     name: JSON files parse
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Parse every .json file
         run: |
           find . -name '*.json' -not -path './.git/*' -not -path '*/node_modules/*' -print0 |
