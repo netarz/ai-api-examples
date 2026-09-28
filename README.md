@@ -12,6 +12,9 @@ OpenAI-compatible AI API examples for developers in Iran: one key for GPT, Claud
 [![Python](https://img.shields.io/badge/Python-3.9%2B-ffc700?style=flat-square&labelColor=14161f&logo=python&logoColor=white)](python/)
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-ffc700?style=flat-square&labelColor=14161f&logo=nodedotjs&logoColor=white)](node/)
 [![PHP](https://img.shields.io/badge/PHP-8.1%2B-ffc700?style=flat-square&labelColor=14161f&logo=php&logoColor=white)](php/)
+[![Go](https://img.shields.io/badge/Go-1.21%2B-ffc700?style=flat-square&labelColor=14161f&logo=go&logoColor=white)](go/)
+[![.NET](https://img.shields.io/badge/.NET-8-ffc700?style=flat-square&labelColor=14161f&logo=dotnet&logoColor=white)](dotnet/)
+[![Ruby](https://img.shields.io/badge/Ruby-3.0%2B-ffc700?style=flat-square&labelColor=14161f&logo=ruby&logoColor=white)](ruby/)
 [![Docs](https://img.shields.io/badge/docs-netarz.ir%2Fdocs%2Fai-ffc700?style=flat-square&labelColor=14161f)](https://netarz.ir/docs/ai?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=header)
 
 [معرفی سرویس](https://netarz.ir/ai-api?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=header) · [مستندات](https://netarz.ir/docs/ai?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=header) · [مدل‌ها و قیمت‌ها](https://netarz.ir/ai-api/models?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=header) · [ساخت کلید](https://netarz.ir/ai?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=header) · [English](#english)
@@ -21,7 +24,7 @@ OpenAI-compatible AI API examples for developers in Iran: one key for GPT, Claud
 <a id="intro"></a>
 
 این مخزن نمونه‌کدهای آماده برای وصل شدن به **API هوش مصنوعی نِت اَرز** (وب سرویس هوش مصنوعی) را دارد: Python، Node.js،
-PHP، Laravel، cURL، LangChain، n8n، ربات تلگرام و ویرایشگرهای کد مثل Cursor و Cline.
+PHP، Laravel، Go، C# (.NET)، Ruby، cURL، LangChain، n8n، ربات تلگرام و ویرایشگرهای کد مثل Cursor و Cline.
 
 اگر با کتابخانهٔ رسمی OpenAI کار کرده‌اید، کد شما تقریباً همان است. فقط دو مقدار عوض می‌شود:
 
@@ -37,11 +40,13 @@ PHP، Laravel، cURL، LangChain، n8n، ربات تلگرام و ویرایشگ
 - [شروع در دو دقیقه](#quickstart)
 - [پیش از اجرای نمونه‌ها](#before-you-run)
 - [فهرست نمونه‌ها](#examples)
+- [Go، C# و Ruby](#more-languages)
 - [یک کلید، چهار سازنده](#providers)
 - [هزینه را کنترل کنید](#cost)
 - [کلید را کجا نگه دارید](#key-safety)
 - [خطاهای رایج](#errors)
 - [پرسش‌های رایج](#faq)
+- [بررسی خودکار کد و فهرست تغییرات](#ci)
 - [مخزن‌های دیگر نِت اَرز](#related)
 - [مشارکت و پشتیبانی](#support)
 - [English](#english)
@@ -121,10 +126,16 @@ export NETARZ_API_KEY="sk-ntz-v1-..."
 | [`python/audio.py`](python/audio.py) | متن به گفتار و گفتار به متن | [صوت](https://netarz.ir/docs/ai/audio?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
 | [`python/responses_api.py`](python/responses_api.py) | Responses API (فقط مدل‌های OpenAI) | [Responses API](https://netarz.ir/docs/ai/responses-api?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
 | [`python/account_and_models.py`](python/account_and_models.py) · [`curl/models-and-account.sh`](curl/models-and-account.sh) | فهرست مدل‌ها (بدون کلید) و موجودی حساب | [احراز هویت](https://netarz.ir/docs/ai/authentication?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
+| [`python/vision.py`](python/vision.py) · [`node/vision.mjs`](node/vision.mjs) | فرستادن تصویر به مدل (vision)، با نشانی اینترنتی یا فایلی روی سیستم خودتان | [Chat Completions](https://netarz.ir/docs/ai/chat-completions?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
+| [`python/rag_persian.py`](python/rag_persian.py) | RAG فارسی کوچک: امبدینگ، شباهت کسینوسی (cosine similarity) و جوابی که فقط از متن‌های پیداشده می‌آید | [امبدینگ](https://netarz.ir/docs/ai/embeddings?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
+| [`python/usage_and_cost.py`](python/usage_and_cost.py) | خواندن مصرف توکن از فیلد `usage`، برآورد هزینه و مبلغ کسرشده با `GET /requests/{id}` و `GET /usage` | [حساب و مصرف](https://netarz.ir/docs/ai/account-and-usage?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
 | [`python/retry_and_errors.py`](python/retry_and_errors.py) | مدیریت خطا و تلاش دوباره | [خطاها](https://netarz.ir/docs/ai/errors?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
 | [`node/`](node/) | همین نمونه‌ها با Node.js، به‌علاوهٔ [`server-proxy.mjs`](node/server-proxy.mjs) که کلید را روی سرور نگه می‌دارد | [SDKها](https://netarz.ir/docs/ai/sdks?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
 | [`php/`](php/) | `openai-php/client`، و cURL خالص برای هاست اشتراکی (معمولی و استریم) | [SDKها](https://netarz.ir/docs/ai/sdks?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
 | [`laravel/`](laravel/) | سرویس `NetArzAi` با Http لاراول و یک route نمونه | [SDKها](https://netarz.ir/docs/ai/sdks?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
+| [`go/`](go/) | Go با `net/http` و بدون کتابخانهٔ جانبی: گفت‌وگو و استریم | [SDKها](https://netarz.ir/docs/ai/sdks?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
+| [`dotnet/`](dotnet/) | C# (.NET 8) با `HttpClient` و بدون بستهٔ NuGet: گفت‌وگو و استریم | [SDKها](https://netarz.ir/docs/ai/sdks?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
+| [`ruby/`](ruby/) | Ruby با `net/http` و بدون gem: گفت‌وگو و استریم | [SDKها](https://netarz.ir/docs/ai/sdks?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
 | [`curl/`](curl/) | همهٔ endpointهای اصلی با cURL | [مرجع تعاملی](https://netarz.ir/docs/ai/reference?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
 | [`langchain/`](langchain/) | LangChain پایتون: گفت‌وگو، عوض کردن مدل، RAG کوچک | [SDKها](https://netarz.ir/docs/ai/sdks?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
 | [`telegram-bot/`](telegram-bot/) | ربات تلگرام که با مدل جواب می‌دهد | [راهنمای ربات تلگرام](https://netarz.ir/wiki/ai-telegram-bot-webservice?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) |
@@ -134,6 +145,29 @@ export NETARZ_API_KEY="sk-ntz-v1-..."
 
 ساخت ویدیو (Sora) و موسیقی (Lyria) نمونه‌کد جدا در این مخزن ندارند؛ نمونهٔ کامل هر دو در مستندات است:
 [ویدیو](https://netarz.ir/docs/ai/video?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples) · [موسیقی](https://netarz.ir/docs/ai/music?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=examples).
+
+<a id="more-languages"></a>
+
+## Go، C# و Ruby
+
+این سه نمونه فقط از کتابخانهٔ استاندارد همان زبان استفاده می‌کنند و کلید را از متغیر محیطی `NETARZ_API_KEY` می‌خوانند.
+هر کدام یک گفت‌وگوی ساده و یک نمونهٔ استریم دارد.
+
+```bash
+export NETARZ_API_KEY="sk-ntz-v1-..."
+
+# Go 1.21+
+(cd go && go run ./chat && go run ./stream)
+
+# .NET 8
+(cd dotnet && dotnet run && dotnet run -- stream)
+
+# Ruby 3.0+
+(cd ruby && ruby chat.rb && ruby stream.rb)
+```
+
+اگر کتابخانهٔ رسمی OpenAI را برای Go یا .NET ترجیح می‌دهید، همان کتابخانه هم کار می‌کند؛ فقط نشانی پایه را
+`https://netarz.ir/api/ai/v1` بگذارید. نمونهٔ کتابخانهٔ Go در [صفحهٔ SDKها](https://netarz.ir/docs/ai/sdks?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=more-languages) آمده است.
 
 <a id="providers"></a>
 
@@ -201,6 +235,16 @@ export NETARZ_API_KEY="sk-ntz-v1-..."
 **برنامه‌نویس نیستم؛ فقط می‌خواهم با مدل‌ها گفت‌وگو کنم.**
 وب‌سرویس برای وصل کردن سایت، اپ یا ربات است. برای گفت‌وگو در مرورگر [استودیو هوش مصنوعی](https://netarz.ir/ai-studio?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=faq) را ببینید.
 
+<a id="ci"></a>
+
+## بررسی خودکار کد و فهرست تغییرات
+
+با هر Push و Pull Request، [گردش‌کار CI](.github/workflows/ci.yml) نحو (syntax) همهٔ نمونه‌ها را بررسی می‌کند و نمونه‌های Go و .NET را
+می‌سازد (build). این بررسی هیچ درخواستی به API نمی‌فرستد و کلید لازم ندارد، پس از اعتبار کسی چیزی کم نمی‌شود.
+Dependabot هم ماهی یک بار نسخهٔ تازهٔ وابستگی‌ها را پیشنهاد می‌دهد.
+
+تغییرات هر نسخه در [CHANGELOG.md](CHANGELOG.md) آمده است.
+
 <a id="related"></a>
 
 ## مخزن‌های دیگر نِت اَرز
@@ -222,8 +266,8 @@ export NETARZ_API_KEY="sk-ntz-v1-..."
 - **حساب، اعتبار و کلید:** این‌ها جای Issue نیستند. از پنل نِت اَرز تیکت بزنید یا به `info@netarz.ir` ایمیل بفرستید.
 - **مشکل امنیتی:** در Issue عمومی ننویسید؛ طبق [سیاست امنیتی](SECURITY.md) به `dev@netarz.ir` بفرستید.
 
-«نِت اَرز» واسط خرید است و نمایندهٔ رسمی OpenAI، Anthropic، Google یا DeepSeek نیست. نام‌ها و نشان‌های این شرکت‌ها
-متعلق به خودشان است.
+«نِت اَرز» مرکز خرید سرویس‌های خارجی است و نمایندهٔ رسمی هیچ‌یک از شرکت‌هایی که نامشان در این مخزن آمده نیست.
+نام‌ها و نشان‌های OpenAI، Anthropic، Google و DeepSeek متعلق به خود این شرکت‌هاست.
 
 مجوز: [MIT](LICENSE) · [آیین رفتار](CODE_OF_CONDUCT.md)
 
@@ -235,6 +279,16 @@ export NETARZ_API_KEY="sk-ntz-v1-..."
 
 **NetArz AI API examples.** Ready-to-run code for the NetArz AI gateway, an OpenAI-compatible API that lets
 developers in Iran call GPT, Claude, Gemini and DeepSeek models with one key, paying from credit bought in Toman.
+There are no free models: every call is paid from your prepaid credit.
+
+- [Quick start](#quick-start)
+- [Examples](#examples-en)
+- [Go, C# and Ruby](#go-c-and-ruby)
+- [Facts](#facts)
+- [CI and changelog](#ci-and-changelog)
+- [Links](#links)
+
+<a id="quick-start"></a>
 
 ### Quick start
 
@@ -248,6 +302,36 @@ cd ai-api-examples/python && pip install -r requirements.txt
 export NETARZ_API_KEY="sk-ntz-v1-..."
 python chat.py
 ```
+
+<a id="examples-en"></a>
+
+### Examples
+
+| Folder / file | What it shows |
+|---|---|
+| [`python/`](python/) | Chat, streaming, JSON output, tool calling, embeddings, images, audio, Responses API, account and models, retries |
+| [`python/vision.py`](python/vision.py) · [`node/vision.mjs`](node/vision.mjs) | Image input (vision) from a URL or a local file |
+| [`python/rag_persian.py`](python/rag_persian.py) | A small Persian RAG: embeddings, cosine similarity in plain Python, grounded answer |
+| [`python/usage_and_cost.py`](python/usage_and_cost.py) | Token `usage`, a cost estimate from `/models` prices, the charged amount from `/requests/{id}` and `/usage` |
+| [`node/`](node/) | The same with Node.js, plus a server-side proxy that keeps the key off the browser |
+| [`php/`](php/) · [`laravel/`](laravel/) | `openai-php/client`, plain cURL, and a Laravel service |
+| [`go/`](go/) · [`dotnet/`](dotnet/) · [`ruby/`](ruby/) | Chat and streaming with each language's standard library only |
+| [`curl/`](curl/) | Shell scripts for the main endpoints |
+| [`langchain/`](langchain/) · [`telegram-bot/`](telegram-bot/) · [`integrations/`](integrations/) | LangChain, a Telegram bot, n8n, Cursor, Cline and Continue |
+
+<a id="go-c-and-ruby"></a>
+
+### Go, C# and Ruby
+
+Standard library only; the key is read from `NETARZ_API_KEY`.
+
+```bash
+(cd go && go run ./chat && go run ./stream)          # Go 1.21+
+(cd dotnet && dotnet run && dotnet run -- stream)    # .NET 8
+(cd ruby && ruby chat.rb && ruby stream.rb)          # Ruby 3.0+
+```
+
+<a id="facts"></a>
 
 ### Facts
 
@@ -267,6 +351,16 @@ python chat.py
 - Send `max_tokens`: credit for the largest possible answer is reserved before each call.
 - Keep the key on your server. NetArz stores only metadata, not prompts or completions; the request body is forwarded unchanged to the upstream provider, whose own retention policy then applies.
 
+<a id="ci-and-changelog"></a>
+
+### CI and changelog
+
+[CI](.github/workflows/ci.yml) checks the syntax of every example and builds the Go and .NET projects on each push and
+pull request. It never calls the API and uses no key. Dependabot proposes dependency updates monthly. Release notes
+are in [CHANGELOG.md](CHANGELOG.md).
+
+<a id="links"></a>
+
 ### Links
 
 - Service overview: [netarz.ir/ai-api](https://netarz.ir/ai-api?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=english)
@@ -277,5 +371,5 @@ python chat.py
   [netarz-fx-wordpress](https://github.com/netarz/netarz-fx-wordpress) (WordPress plugin)
 
 Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md). Report security issues privately to `dev@netarz.ir`
-([SECURITY.md](SECURITY.md)). NetArz is an independent reseller, not an official partner of OpenAI, Anthropic, Google
-or DeepSeek. Licensed under MIT.
+([SECURITY.md](SECURITY.md)). NetArz is a marketplace for buying foreign services and is not an official representative of
+OpenAI, Anthropic, Google or DeepSeek. Licensed under MIT.
