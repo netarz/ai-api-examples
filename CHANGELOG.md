@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- README: a «روی گیسو» section. Gisoo (gisoo.pro), NetArz's AI brand, serves the same API at `https://gisoo.pro/api/v1`
+  and adds Anthropic's Messages API, so the Anthropic SDKs and Claude Code work there. `.env.example` and `providers/README.md` point to it.
+
 ## [1.1.0] - 2026-09-28
 
 ### Added

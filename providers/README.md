@@ -6,7 +6,7 @@
 | سازنده | نمونهٔ شناسه | قاعده | نمونه‌کد | صفحه در نِت اَرز |
 |---|---|---|---|---|
 | OpenAI (GPT) | `gpt-4o-mini`، `gpt-4.1-mini`، `gpt-5-mini` | بدون پیشوند. مدل‌های Pro و Codex (مثل `gpt-5.4-pro`) فقط با مسیر `/responses` جواب می‌دهند | [openai/chat.py](openai/chat.py) | [API OpenAI در ایران](https://netarz.ir/ai-api/openai?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=providers-readme) |
-| Anthropic (Claude) | `openrouter/anthropic/claude-sonnet-4.5`، `openrouter/anthropic/claude-haiku-4.5` | **فقط از راه OpenRouter**؛ بدون پیشوند `openrouter/anthropic/` پیدا نمی‌شود. کتابخانهٔ Anthropic و مسیر `/v1/messages` روی درگاه کار نمی‌کند | [claude/chat.py](claude/chat.py) | [API کلود](https://netarz.ir/ai-api/claude?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=providers-readme) |
+| Anthropic (Claude) | `openrouter/anthropic/claude-sonnet-4.5`، `openrouter/anthropic/claude-haiku-4.5` | **فقط از راه OpenRouter**؛ بدون پیشوند `openrouter/anthropic/` پیدا نمی‌شود. کتابخانهٔ Anthropic و مسیر `/v1/messages` روی این درگاه کار نمی‌کند؛ روی نشانی [گیسو](https://github.com/netarz/gisoo) (`https://gisoo.pro/api`) کار می‌کند | [claude/chat.py](claude/chat.py) | [API کلود](https://netarz.ir/ai-api/claude?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=providers-readme) |
 | Google (Gemini) | `gemini-3.5-flash`، `gemini-3.1-flash-lite`، `gemini-embedding-001` | بدون پیشوند. همتای همین مدل‌ها با `openrouter/google/` هم هست. مدل‌های تصویرساز گوگل (Imagen) روی درگاه نیست | [gemini/chat.py](gemini/chat.py) | [API جمینای](https://netarz.ir/ai-api/gemini?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=providers-readme) |
 | DeepSeek | `deepseek-flash`، `deepseek-v4-pro` | این دو مستقیم وصل‌اند؛ بقیه (مثل R1) با پیشوند `openrouter/deepseek/` | [deepseek/chat.py](deepseek/chat.py) | [API دیپ‌سیک](https://netarz.ir/ai-api/deepseek?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=providers-readme) |
 | مدل‌های دیگر OpenRouter | `openrouter/meta-llama/llama-3.3-70b-instruct` | `openrouter/` + شناسهٔ خودِ OpenRouter | همان کد بالا | [فهرست مدل‌ها](https://netarz.ir/ai-api/models?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=providers-readme) |
@@ -31,7 +31,7 @@ One key and one base URL for every provider; only `model` changes. The id format
 | Provider | Example ids | Rule |
 |---|---|---|
 | OpenAI | `gpt-4o-mini`, `gpt-4.1-mini`, `gpt-5-mini` | No prefix. Pro/Codex models (e.g. `gpt-5.4-pro`) answer only on `/responses`. |
-| Anthropic Claude | `openrouter/anthropic/claude-sonnet-4.5` | **Only via OpenRouter**; the `openrouter/anthropic/` prefix is required. The Anthropic SDK and `/v1/messages` are not supported, use Chat Completions. |
+| Anthropic Claude | `openrouter/anthropic/claude-sonnet-4.5` | **Only via OpenRouter**; the `openrouter/anthropic/` prefix is required. The Anthropic SDK and `/v1/messages` are not supported here, use Chat Completions; they work on [Gisoo](https://github.com/netarz/gisoo) (`https://gisoo.pro/api`). |
 | Google Gemini | `gemini-3.5-flash`, `gemini-embedding-001` | No prefix; OpenRouter twins exist as `openrouter/google/...`. No Imagen image models. |
 | DeepSeek | `deepseek-flash`, `deepseek-v4-pro` | Direct; other DeepSeek models (R1) use `openrouter/deepseek/...`. |
 | Other OpenRouter models | `openrouter/meta-llama/llama-3.3-70b-instruct` | `openrouter/` + the OpenRouter id. |
