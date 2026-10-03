@@ -35,6 +35,9 @@ PHP، Laravel، Go، C# (.NET)، Ruby، cURL، LangChain، n8n، ربات تلگ
 
 هزینهٔ هر درخواست به دلار از اعتبار تومانی شما کم می‌شود و کارت ارزی لازم نیست.
 
+> **روی گیسو هم کار می‌کند.** این نمونه‌ها روی [گیسو](#gisoo)، برند هوش مصنوعی نِت اَرز، هم اجرا می‌شوند: نشانی پایه را
+> `https://gisoo.pro/api/v1` بگذارید و کلید `sk-gisoo-v1-…` یا همان کلید نِت اَرز خودتان را. روی گیسو کتابخانهٔ Anthropic و **Claude Code** هم وصل می‌شوند.
+
 ## فهرست
 
 - [شروع در دو دقیقه](#quickstart)
@@ -42,6 +45,7 @@ PHP، Laravel، Go، C# (.NET)، Ruby، cURL، LangChain، n8n، ربات تلگ
 - [فهرست نمونه‌ها](#examples)
 - [Go، C# و Ruby](#more-languages)
 - [یک کلید، چهار سازنده](#providers)
+- [روی گیسو: Claude Code و کتابخانهٔ Anthropic](#gisoo)
 - [هزینه را کنترل کنید](#cost)
 - [کلید را کجا نگه دارید](#key-safety)
 - [خطاهای رایج](#errors)
@@ -176,13 +180,50 @@ export NETARZ_API_KEY="sk-ntz-v1-..."
 | سازنده | شناسهٔ نمونه | نکته | صفحه |
 |---|---|---|---|
 | OpenAI | `gpt-4o-mini` | مدل‌های Pro و Codex فقط با `/responses` | [API OpenAI در ایران](https://netarz.ir/ai-api/openai?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=providers) |
-| Claude | `openrouter/anthropic/claude-sonnet-4.5` | فقط با پیشوند `openrouter/anthropic/`؛ کتابخانهٔ Anthropic کار نمی‌کند | [API کلود](https://netarz.ir/ai-api/claude?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=providers) |
+| Claude | `openrouter/anthropic/claude-sonnet-4.5` | فقط با پیشوند `openrouter/anthropic/`؛ کتابخانهٔ Anthropic روی این نشانی کار نمی‌کند، [روی گیسو](#gisoo) کار می‌کند | [API کلود](https://netarz.ir/ai-api/claude?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=providers) |
 | Gemini | `gemini-3.5-flash` | Imagen (تصویرساز گوگل) روی درگاه نیست | [API جمینای](https://netarz.ir/ai-api/gemini?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=providers) |
 | DeepSeek | `deepseek-flash` | R1 و بقیه با پیشوند `openrouter/deepseek/` | [API دیپ‌سیک](https://netarz.ir/ai-api/deepseek?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=providers) |
 
 جزئیات و قاعدهٔ شناسه‌ها در [`providers/README.md`](providers/README.md). فهرست زندهٔ مدل‌ها را بدون کلید بگیرید:
 `curl "https://netarz.ir/api/ai/v1/models?type=chat"`. قیمت هر مدل به دلار و تومان در
 [صفحهٔ مدل‌ها](https://netarz.ir/ai-api/models?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=providers) است.
+
+<a id="gisoo"></a>
+
+## روی گیسو: Claude Code و کتابخانهٔ Anthropic
+
+[گیسو](https://gisoo.pro/?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=gisoo) برند هوش مصنوعی نِت اَرز است: اپ فارسی برای گفت‌وگو با بیش از ۴۰۰ مدل، ساخت تصویر، ویدیو، موسیقی
+و صدا، کارشناس‌های هوش مصنوعی و گفت‌وگوی صوتی زنده، به‌علاوهٔ همین وب‌سرویس روی نشانی خودش. حساب و اعتبار هوش مصنوعی در
+هر دو سایت یکی است و کلیدها جابه‌جا کار می‌کنند: `sk-ntz-v1-…` روی گیسو و `sk-gisoo-v1-…` روی نِت اَرز.
+
+| | نِت اَرز | گیسو |
+|---|---|---|
+| نشانی پایه | `https://netarz.ir/api/ai/v1` | `https://gisoo.pro/api/v1` |
+| قالب OpenAI (همهٔ نمونه‌های این مخزن) | دارد | دارد |
+| Messages API شرکت Anthropic (`/messages`) | ندارد | دارد |
+| Claude Code و کتابخانهٔ رسمی Anthropic | ندارد | دارد |
+
+برای اجرای نمونه‌های این مخزن روی گیسو نشانی پایه را عوض کنید. بیشتر نمونه‌ها آن را از `NETARZ_BASE_URL` می‌خوانند؛
+در نمونه‌های `curl/` و `providers/` نشانی در خود فایل نوشته شده و همان‌جا عوضش کنید:
+
+```bash
+export NETARZ_BASE_URL="https://gisoo.pro/api/v1"
+export NETARZ_API_KEY="sk-gisoo-v1-..."   # یا همان کلید sk-ntz-v1- خودتان
+python python/chat.py
+```
+
+Claude Code با گیسو (نشانی بدون `/v1`):
+
+```bash
+export ANTHROPIC_BASE_URL="https://gisoo.pro/api"
+export ANTHROPIC_AUTH_TOKEN="sk-gisoo-v1-..."
+export ANTHROPIC_MODEL="claude-sonnet-5-5"
+claude
+```
+
+نمونه‌کدهای Claude Code، کتابخانهٔ Anthropic (Python و Node.js) و ساخت ویدیو و موسیقی در مخزن
+[netarz/gisoo](https://github.com/netarz/gisoo) است. راهنما: [gisoo.pro/docs/anthropic](https://gisoo.pro/docs/anthropic?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=gisoo) ·
+اپ گیسو: [gisoo.pro/app](https://gisoo.pro/app?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=gisoo)
 
 <a id="cost"></a>
 
@@ -223,7 +264,8 @@ export NETARZ_API_KEY="sk-ntz-v1-..."
 ## پرسش‌های رایج
 
 **با کتابخانهٔ Anthropic یا مسیر `/v1/messages` کار می‌کند؟**
-نه. Claude را با کتابخانهٔ OpenAI و مسیر `/chat/completions` صدا بزنید؛ تبدیل درخواست به قالب Claude با شما نیست.
+روی نشانی نِت اَرز نه؛ آن‌جا Claude را با کتابخانهٔ OpenAI و مسیر `/chat/completions` صدا بزنید. روی نشانی گیسو
+(`https://gisoo.pro/api`) کتابخانهٔ Anthropic و Claude Code با همان اعتبار کار می‌کنند؛ بخش [روی گیسو](#gisoo) را ببینید.
 
 **مدل رایگان دارید؟**
 نه. مدل‌های رایگان روی ظرفیت مشترک ارائه‌دهنده بودند و وسط کار خطا می‌دادند، پس آن‌ها را برداشتیم. قیمت هر مدل را در [صفحهٔ مدل‌ها](https://netarz.ir/ai-api/models?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=faq) ببینید و مدلی را که به بودجهٔ پروژه‌تان می‌خورد انتخاب کنید.
@@ -233,7 +275,7 @@ export NETARZ_API_KEY="sk-ntz-v1-..."
 جزئیات: [حریم خصوصی داده در API هوش مصنوعی](https://netarz.ir/wiki/ai-api-privacy-iran?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=faq)
 
 **برنامه‌نویس نیستم؛ فقط می‌خواهم با مدل‌ها گفت‌وگو کنم.**
-وب‌سرویس برای وصل کردن سایت، اپ یا ربات است. برای گفت‌وگو در مرورگر [استودیو هوش مصنوعی](https://netarz.ir/ai-studio?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=faq) را ببینید.
+وب‌سرویس برای وصل کردن سایت، اپ یا ربات است. برای گفت‌وگو در مرورگر [استودیو هوش مصنوعی](https://netarz.ir/ai-studio?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=faq) یا [اپ گیسو](https://gisoo.pro/app?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=faq) را ببینید.
 
 <a id="ci"></a>
 
@@ -251,6 +293,7 @@ Dependabot هم ماهی یک بار نسخهٔ تازهٔ وابستگی‌ها
 
 | مخزن | چیست |
 |---|---|
+| [gisoo](https://github.com/netarz/gisoo) | **گیسو**، برند هوش مصنوعی نِت اَرز: معرفی اپ و نمونه‌کد Claude Code، کتابخانهٔ Anthropic، ساخت ویدیو و موسیقی ([gisoo.pro](https://gisoo.pro/?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=related)) |
 | [fx-api-examples](https://github.com/netarz/fx-api-examples) | نمونه‌کد وب‌سرویس نرخ ارز: نرخ دلار و ارزها به تومان در PHP، JavaScript، Python، Laravel، Google Sheets و Excel |
 | [netarz-fx-wordpress](https://github.com/netarz/netarz-fx-wordpress) | افزونهٔ وردپرس نرخ ارز با شورت‌کد `[netarz_rate currency="usd"]` و ابزارک |
 | [netarz](https://github.com/netarz/netarz) | معرفی همهٔ وب‌سرویس‌ها و مخزن‌های نِت اَرز |
@@ -349,6 +392,10 @@ Standard library only; the key is read from `NETARZ_API_KEY`.
   `audio_stt`, `video`, `music`).
 - Errors follow OpenAI's shape `{"error": {"message", "type", "code", "param"}}`; a call that fails before any output is not charged (an interrupted stream is billed for what was generated).
 - Send `max_tokens`: credit for the largest possible answer is reserved before each call.
+- **Gisoo** (our AI brand) serves the same gateway at `https://gisoo.pro/api/v1`; keys work on both. Gisoo also speaks
+  Anthropic's Messages API, so the Anthropic SDKs and **Claude Code** work there (`ANTHROPIC_BASE_URL=https://gisoo.pro/api`).
+  Set `NETARZ_BASE_URL=https://gisoo.pro/api/v1` to run these examples against it (the `curl/` and `providers/` files
+  have the URL written in, change it there). Examples: [netarz/gisoo](https://github.com/netarz/gisoo).
 - Keep the key on your server. NetArz stores only metadata, not prompts or completions; the request body is forwarded unchanged to the upstream provider, whose own retention policy then applies.
 
 <a id="ci-and-changelog"></a>
@@ -367,6 +414,7 @@ are in [CHANGELOG.md](CHANGELOG.md).
 - Docs: [netarz.ir/docs/ai](https://netarz.ir/docs/ai?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=english) · Migrating from OpenAI: [netarz.ir/docs/ai/migrating-from-openai](https://netarz.ir/docs/ai/migrating-from-openai?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=english)
 - Models and prices: [netarz.ir/ai-api/models](https://netarz.ir/ai-api/models?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=english)
 - All NetArz open-source projects: [netarz.ir/open-source](https://netarz.ir/open-source?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=english)
+- Gisoo, our Persian AI app and API: [gisoo.pro](https://gisoo.pro/?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=english) · [Claude Code guide](https://gisoo.pro/docs/anthropic?utm_source=github&utm_medium=referral&utm_campaign=ai-api-examples&utm_content=english) · [netarz/gisoo](https://github.com/netarz/gisoo)
 - Related repos: [fx-api-examples](https://github.com/netarz/fx-api-examples) (Toman exchange rate API) ·
   [netarz-fx-wordpress](https://github.com/netarz/netarz-fx-wordpress) (WordPress plugin)
 
